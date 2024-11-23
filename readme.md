@@ -1,0 +1,81 @@
+### 1.[13. 罗马数字转整数](https://leetcode.cn/problems/roman-to-integer/)
+
+#### （1）数组若确定没有0值，遍历可直接用是s[i]作为条件
+
+```c
+for (; s[i]; i++) { // 遍历相邻的罗马数字
+```
+
+#### （2）通过使用哈希表，减少if语句
+
+```c
+int roman[128];
+roman['I'] = 1;
+roman['V'] = 5;
+```
+
+---
+
+### 2.[20. 有效的括号](https://leetcode.cn/problems/valid-parentheses/)
+
+#### 可以通过使用函数来减少if语句
+
+```c
+char pair(char s) {
+    if (s==')') return '(';
+    if (s==']') return '[';
+    if (s=='}') return '{';
+    return 0;
+}
+```
+
+***
+
+### 3.[2606. 找到最大开销的子字符串](https://leetcode.cn/problems/find-the-substring-with-maximum-cost/)
+
+#### (1)`ord()`可获取ASCLL码，`chr()`相反
+
+#### (2)`zip()`可以将对象打包成元组
+
+```py
+a = [1, 2, 3, 4, 5]
+b = [6, 7, 8, 9, 10]
+cc = list(zip(a,b))
+print(cc)
+a1, b1 = zip(*cc)
+print(list(a1))
+print(list(b1))
+```
+
+```py
+[(1, 6), (2, 7), (3, 8), (4, 9), (5, 10)]
+[1, 2, 3, 4, 5]
+[6, 7, 8, 9, 10]
+```
+
+若`cc=zip(a, b)`，则会生成一个迭代器，`cc`被使用一次后将被消耗，比如打印之后，`cc`将消失，再对cc进行操作会报错
+
+所以使用在首次创建时，将其转化成列表`cc=list(zip(a,b))`，后续`cc`不会消失，也就可以对`cc`进行多次操作，比如打印、解包
+
+#### (3)[dict.get(key, default=None)](https://www.runoob.com/python3/python3-att-dictionary-get.html)返回指定键的值，如果键不在字典中返回 default 设置的默认值
+
+```py
+a = "abcdef"
+b = "123456"
+c = dict(zip(a,b))
+print(c)
+print(c.get('a',ord('a')),c.get('z',ord('z')))
+```
+
+```py
+{'a': '1', 'b': '2', 'c': '3', 'd': '4', 'e': '5', 'f': '6'}
+1 122
+```
+
+### 4.[2466. 统计构造好字符串的方案数](https://leetcode.cn/problems/count-ways-to-build-good-strings/)
+
+#### (1)最大公约数（GCD）某些时候可以减小问题规模
+
+```python
+g = gcd(zero, one)
+```
