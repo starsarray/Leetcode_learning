@@ -72,6 +72,8 @@ print(c.get('a',ord('a')),c.get('z',ord('z')))
 1 122
 ```
 
+***
+
 ### 4.[2466. 统计构造好字符串的方案数](https://leetcode.cn/problems/count-ways-to-build-good-strings/)
 
 #### (1)最大公约数（GCD）某些时候可以减小问题规模
@@ -79,3 +81,25 @@ print(c.get('a',ord('a')),c.get('z',ord('z')))
 ```python
 g = gcd(zero, one)
 ```
+
+***
+
+### 5.[209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/)
+
+求总和大于等于 `target` 的长度最小的子数组时，每次计算出前缀和判断是否大于`target`都会从前往后减去数组里的值，可以优化每次不用重复减，上次减完不用还原，减少重复的删除过程,也就是滑动窗口
+
+```C++
+int minSubArrayLen(int target, vector<int>& nums) {
+        int n = nums.size();
+        int ans = n+1,l = 0,s = 0;
+        for(int i = 0; i<nums.size();i++){
+            s+=nums[i];
+            while(s>=target){
+                ans = min(ans,i-l+1);
+                s -= nums[l++];
+            }
+        }
+        return ans<=n ? ans:0;
+    }
+```
+
