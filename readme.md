@@ -103,3 +103,17 @@ int minSubArrayLen(int target, vector<int>& nums) {
     }
 ```
 
+### 6.[2904. 最短且字典序最小的美丽子字符串](https://leetcode.cn/problems/shortest-and-lexicographically-smallest-beautiful-string/)
+
+C++计数：
+
+```C++
+count(s.begin(),s.end(),'1') // 统计字符 1 的个数
+```
+
+获取子串：第一个参数为起始位置，第二个参数为长度
+
+```C++
+s.substr(l,r-l+1);
+```
+
