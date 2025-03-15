@@ -117,3 +117,16 @@ count(s.begin(),s.end(),'1') // 统计字符 1 的个数
 s.substr(l,r-l+1);
 ```
 
+### 7.[1574. 删除最短的子数组使剩余数组有序](https://leetcode.cn/problems/shortest-subarray-to-be-removed-to-make-array-sorted/)
+
+注意与或运算先后顺序
+
+```
+while(r<n && arr[l]>arr[r] )r++; //先判断 r<n 再判断 arr[l]>arr[r]
+```
+
+若写成arr[l]>arr[r] && r<n，则会先判断arr[l]>arr[r]，最后由于r++超出数组索引报错
+
+### 8.[3011. 判断一个数组是否可以变为有序](https://leetcode.cn/problems/find-if-array-can-be-sorted/)
+
+`‌__builtin_popcount()`**函数用于计算一个整数的二进制表示中1的个数‌**
